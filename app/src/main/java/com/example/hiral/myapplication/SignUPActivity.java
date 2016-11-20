@@ -25,6 +25,7 @@ public class SignUPActivity extends LoginActivity
     public GoogleMap mMap;
     Location mprovider;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -35,24 +36,16 @@ public class SignUPActivity extends LoginActivity
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
 
-        /**
-         * TODO: Define EditText attributes for editTextUserName,editTextPassword,editTextConfirmPassword
-         */
-
-        /**
-         * TODO: Define EditText Attribute for latitude,longitude
-         */
-
-        /**
-         * TODO: Define Button attribute for btnCreateAccount
-         */
+        editTextUserName = (EditText)findViewById(R.id.editText_username);
+        editTextPassword = (EditText)findViewById(R.id.editText_password);
+        editTextConfirmPassword = (EditText)findViewById(R.id.editText_confirm_password);
+        latitude = (EditText)findViewById(R.id.editText_latitude);
+        longitude = (EditText)findViewById(R.id.editText_longitude);
+        btnHomeLocation = (Button)findViewById(R.id.button_set_home_location);
+        btnCreateAccount = (Button)findViewById(R.id.button_create_acc);
 
         //int percode=1;
         ActivityCompat.requestPermissions(SignUPActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
-
-        /**
-         * TODO: Define Button attribute for btnHomeLocation
-         */
 
         btnHomeLocation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

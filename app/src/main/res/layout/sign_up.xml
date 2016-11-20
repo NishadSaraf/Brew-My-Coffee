@@ -1,24 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:gravity="center_vertical"
               android:weightSum="1">
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/editText_username"
+        android:hint="@string/hint_username"
+        android:inputType="textEmailAddress"/>
 
-    <!-- TODO: EditText UI Control for editTextUserName -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editText_password"
+        android:hint="@string/hint_password"/>
 
-    <!-- TODO: EditText UI Control for editTextPassword -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editText_confirm_password"
+        android:hint="@string/hint_confirm_pass"/>
 
-    <!-- TODO: EditText UI Control for editTextConfirmPassword -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText_latitude"
+        android:hint="@string/hint_latitude"/>
 
-    <!-- TODO: EditText UI Control for Latitude -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText_longitude"
+        android:hint="@string/hint_longitude"/>
 
-    <!-- TODO: EditText UI Control for Longitude-->
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_set_home_location"
+        android:layout_gravity="center"
+        android:text="@string/action_set_home_loc"
+        android:textAlignment="center"/>
 
-    <!-- TODO: Button UI Control for buttonCreateAccount -->
-
-    <!-- TODO: Button UI Control for Home_Button -->
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/button_create_acc"
+        android:textAlignment="center"
+        android:text="@string/action_create_account"/>
 
 </LinearLayout>

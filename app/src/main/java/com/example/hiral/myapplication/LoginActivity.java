@@ -1,4 +1,5 @@
 package com.example.hiral.myapplication;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     // UI references
     private EditText mEmail;
     private EditText mPasswordView;
+    private Button mSignUpButton;
     Button mSignInButton;
     LoginDataBaseAdapter loginDataBaseAdapter;
 
@@ -52,10 +54,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-        /** TODO: Code here to create onclick listener for SignUp Button
-         *  TODO: OnClick event for SignUp Button Navigates to SignUpActivity
-         */
+        mSignUpButton = (Button)findViewById(R.id.sign_up_button);
+        mSignUpButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sign_up =new Intent(LoginActivity.this,SignUPActivity.class);
+                startActivity(sign_up);
+            }
+        });
     }
 
     @Override
