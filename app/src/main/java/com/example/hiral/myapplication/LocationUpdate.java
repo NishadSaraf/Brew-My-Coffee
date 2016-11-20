@@ -72,8 +72,8 @@ public class LocationUpdate extends AppCompatActivity{
                  * TODO: Enable the code below after defining getLat() and getLng()
                  * TODO: methods in LoginDataBaseAdapter
                  */
-                //String rx_lat=loginData.getLat(rx_username);
-                //String rx_lon=loginData.getLng(rx_username);
+                String rx_lat=loginData.getLat(rx_username);
+                String rx_lon=loginData.getLng(rx_username);
 
                 /**
                  * store in latitude , longitude variables to pass to json object
