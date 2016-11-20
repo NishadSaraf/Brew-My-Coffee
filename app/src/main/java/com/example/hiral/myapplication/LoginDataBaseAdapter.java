@@ -14,7 +14,7 @@ public class LoginDataBaseAdapter {
 
         // SQL Statement to create a new database.
         static final String DATABASE_CREATE = "create table "+"LOGIN"+
-                "( " +"ID"+" integer primary key autoincrement,"+ "USERNAME  text,PASSWORD text); ";
+                "( " +"ID"+" integer primary key autoincrement,"+ "USERNAME  text,PASSWORD text, LATITUDE text, LONGITUDE text); ";
     /**
      * TODO: Edit the above string to add two new columns in sequence longitude and latitude
      */
@@ -51,11 +51,8 @@ public class LoginDataBaseAdapter {
             // Assigning values for each row.
             newValues.put("USERNAME",userName);
             newValues.put("PASSWORD",password);
-
-            /**
-             * TODO: Add your code here to insert Latitude and Longitude in database
-             *
-             */
+            newValues.put("LATITUDE",lat);
+            newValues.put("LONGITUDE",lng);
 
             // Insert the row into your table
             db.insert("LOGIN", null, newValues);
