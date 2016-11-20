@@ -15,9 +15,6 @@ public class LoginDataBaseAdapter {
         // SQL Statement to create a new database.
         static final String DATABASE_CREATE = "create table "+"LOGIN"+
                 "( " +"ID"+" integer primary key autoincrement,"+ "USERNAME  text,PASSWORD text, LATITUDE text, LONGITUDE text); ";
-    /**
-     * TODO: Edit the above string to add two new columns in sequence longitude and latitude
-     */
 
         // Variable to hold the database instance
         public  SQLiteDatabase db;
@@ -77,14 +74,31 @@ public class LoginDataBaseAdapter {
             return password;
         }
 
-    /** TODO: Code here a method getLng() for extracting Longitude
-     *  Hint: Follow the method getSingleEntry() mentioned above
-     */
+        public String getLng(String userName){
+            Cursor cursor=db.query("LOGIN", null, " USERNAME=?", new String[]{userName}, null, null, null);
+            if(cursor.getCount()<1) // UserName Not Exist
+            {
+                cursor.close();
+                return "NOT EXIST";
+            }
+            cursor.moveToFirst();
+            String longitude= cursor.getString(cursor.getColumnIndex("LONGITUDE"));
+            cursor.close();
+            return longitude;
+        }
 
-
-    /** TODO: Code here a method getLat() for extracting Latitude
-     *  Hint: Follow the method getSingleEntry() mentioned above
-     */
+    public String getLat(String userName){
+        Cursor cursor=db.query("LOGIN", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            return "NOT EXIST";
+        }
+        cursor.moveToFirst();
+        String latitude= cursor.getString(cursor.getColumnIndex("LATITUDE"));
+        cursor.close();
+        return latitude;
+    }
 
     }
 
