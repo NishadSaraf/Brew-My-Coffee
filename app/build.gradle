@@ -39,4 +39,5 @@ dependencies {
     compile 'com.google.android.gms:play-services:9.4.0'
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
 
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
 }
