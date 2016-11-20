@@ -2,6 +2,7 @@ package com.example.hiral.myapplication;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -107,6 +108,9 @@ public class SignUPActivity extends LoginActivity
                     // Save the Data in Database
                     loginDataBaseAdapter.insertEntry(userName, password,lat,lng);
                     Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(SignUPActivity.this,LoginActivity.class);
+                    startActivity(intent);
+
                 }
 
             }
