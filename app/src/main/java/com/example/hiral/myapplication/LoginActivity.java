@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import static android.widget.Toast.LENGTH_SHORT;
 /**
  * Created by Hiral on 7/28/2016.
  */
@@ -44,13 +47,22 @@ public class LoginActivity extends AppCompatActivity {
                 String userName = mEmail.getText().toString();
                 String password = mPasswordView.getText().toString();
 
-                /**TODO: Code here to fetch the Password from database for respective user name
-                 */
-
-                /**TODO: Code here to check if the password entered matches with the database entry
-                 * TODO: if password matches navigate to LocationUpdate Activity using intent
-                 * TODO: if password does not match show a toast "username or password does not match"
-                 */
+                String passwordfromdb = loginDataBaseAdapter.getSingleEntry(userName);
+                if(passwordfromdb.equals("NOT EXIST")){
+                    Toast.makeText(getBaseContext(),R.string.username_does_not_exist,LENGTH_SHORT).show();
+                }
+                else{
+                    if(password.equals(passwordfromdb)){
+                        Intent intent = new Intent(LoginActivity.this,LocationUpdate.class);
+                        intent.putExtra("tx_user_name",userName);
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        //show toast
+                        Toast.makeText(getBaseContext(),R.string.password_does_not_match,LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 

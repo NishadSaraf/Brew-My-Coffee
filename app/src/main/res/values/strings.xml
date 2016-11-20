@@ -12,6 +12,8 @@
     <string name="hint_longitude">Longitude</string>
     <string name="action_create_account">Create Account</string>
     <string name="action_set_home_loc">Set Home Location</string>
+    <string name="password_does_not_match">Passwords do not match!</string>
+    <string name="username_does_not_exist">The entered username does not exist</string>
 
     <!--String related to Maps -->
 
