@@ -69,15 +69,7 @@ public class LocationUpdate extends AppCompatActivity{
             }
         });
 
-        /**
-         * TODO: Define TextView field to display the address of current location on the UI
-         *
-         */
 
-        /**
-         * TODO: Define onClick Listener for "Current_Location Button"
-         * Hint: OnClick event should set the text for TextView field defined above
-         */
         current_location_tv = (TextView) findViewById(R.id.textView_current_location);
         current_location_btn = (Button) findViewById(R.id.button_current_location);
         current_location_btn.setOnClickListener(new View.OnClickListener() {
@@ -107,10 +99,7 @@ public class LocationUpdate extends AppCompatActivity{
                 Bundle extras=getIntent().getExtras();
                 String rx_username=extras.getString("tx_user_name");
 
-                /**
-                 * TODO: Enable the code below after defining getLat() and getLng()
-                 * TODO: methods in LoginDataBaseAdapter
-                 */
+
                 String rx_lat=loginData.getLat(rx_username);
                 String rx_lon=loginData.getLng(rx_username);
 

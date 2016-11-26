@@ -1,65 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:weightSum="1">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:orientation="vertical"
+             android:weightSum="1">
 
-    <EditText
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/editText_username"
-        android:hint="@string/hint_username"
-        android:inputType="textEmailAddress"/>
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back_coffee"
+        android:layout_gravity="bottom"
+        android:id="@+id/background_imageView"
+        android:cropToPadding="true"
+        android:layout_weight="1"/>
 
-    <EditText
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/editText_password"
-        android:hint="@string/hint_password"/>
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:layout_weight="1">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/editText_confirm_password"
-        android:hint="@string/hint_confirm_pass"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/editText_username"
+            android:hint="@string/hint_username"
+            android:inputType="textEmailAddress"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/text"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editText_latitude"
-        android:hint="@string/hint_latitude"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editText_password"
+            android:hint="@string/hint_password"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/text"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editText_longitude"
-        android:hint="@string/hint_longitude"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editText_confirm_password"
+            android:hint="@string/hint_confirm_pass"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/text"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
 
-    <Button
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_set_home_location"
-        android:layout_gravity="center"
-        android:text="@string/action_set_home_loc"
-        android:textAlignment="center"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText_latitude"
+            android:hint="@string/hint_latitude"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/text"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
 
-    <Button
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/button_create_acc"
-        android:textAlignment="center"
-        android:text="@string/action_create_account"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText_longitude"
+            android:hint="@string/hint_longitude"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/text"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
 
-</LinearLayout>
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_set_home_location"
+            android:text="@string/action_set_home_loc"
+            android:textAlignment="center"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/text"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_create_acc"
+            android:textAlignment="center"
+            android:text="@string/action_create_account"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/text"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -25,13 +25,26 @@ public class SignUPActivity extends LoginActivity
     LoginDataBaseAdapter loginDataBaseAdapter;
     public GoogleMap mMap;
     Location mprovider;
-
+    private String userName;
+    private String password;
+    private String confirmPassword;
+    private String lat;
+    private String lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
+
+        if (savedInstanceState == null) {
+            Intent intent = getIntent();
+            userName = intent.getStringExtra(userName);
+            password = intent.getStringExtra(password);
+            confirmPassword = intent.getStringExtra(confirmPassword);
+            lat = intent.getStringExtra(lat);
+            lng = intent.getStringExtra(lng);
+        }
 
         // Creates object for LoginDataBaseAdapter to gain access to database
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
@@ -85,11 +98,11 @@ public class SignUPActivity extends LoginActivity
 
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String userName=editTextUserName.getText().toString();
-                String password=editTextPassword.getText().toString();
-                String confirmPassword=editTextConfirmPassword.getText().toString();
-                String lat=latitude.getText().toString();
-                String lng=longitude.getText().toString();
+                userName=editTextUserName.getText().toString();
+                password=editTextPassword.getText().toString();
+                confirmPassword=editTextConfirmPassword.getText().toString();
+                lat=latitude.getText().toString();
+                lng=longitude.getText().toString();
 
                 // check if any of the fields are vacant
                 if(userName.equals("")||password.equals("")||confirmPassword.equals("")||lat.equals("")||lng.equals(""))
@@ -116,6 +129,18 @@ public class SignUPActivity extends LoginActivity
             }
         });
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+
+        savedInstanceState.putString("username", userName);
+        savedInstanceState.putString("password", password);
+        savedInstanceState.putString("confirm_password", confirmPassword);
+        savedInstanceState.putString("latitude", lat);
+        savedInstanceState.putString("longitude", lng);
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

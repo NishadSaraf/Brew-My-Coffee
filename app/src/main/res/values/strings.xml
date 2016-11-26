@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hint</string>
+    <string name="app_name">Brew My Coffee</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

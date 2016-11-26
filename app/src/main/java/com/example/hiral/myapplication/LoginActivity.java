@@ -1,11 +1,13 @@
 package com.example.hiral.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import static android.widget.Toast.LENGTH_SHORT;
@@ -24,11 +26,19 @@ public class LoginActivity extends AppCompatActivity {
     private Button mSignUpButton;
     Button mSignInButton;
     LoginDataBaseAdapter loginDataBaseAdapter;
+    private String userName;
+    private String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        if (savedInstanceState == null) {
+            Intent intent = getIntent();
+            userName = intent.getStringExtra(userName);
+            password = intent.getStringExtra(password);
+        }
 
         // Creates object for LoginDataBaseAdapter to gain access to database
         loginDataBaseAdapter = new LoginDataBaseAdapter(this);
@@ -44,8 +54,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 // Code below gets the User name and Password
-                String userName = mEmail.getText().toString();
-                String password = mPasswordView.getText().toString();
+                 userName = mEmail.getText().toString();
+                 password = mPasswordView.getText().toString();
 
                 String passwordfromdb = loginDataBaseAdapter.getSingleEntry(userName);
                 if(passwordfromdb.equals("NOT EXIST")){
@@ -74,6 +84,14 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(sign_up);
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+
+        savedInstanceState.putString("username", userName);
+        savedInstanceState.putString("password", password);
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override

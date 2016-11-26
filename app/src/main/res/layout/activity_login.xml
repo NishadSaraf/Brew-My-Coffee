@@ -1,16 +1,24 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center_horizontal"
-              android:orientation="vertical"
-              android:paddingBottom="@dimen/activity_vertical_margin"
-              android:paddingLeft="@dimen/activity_horizontal_margin"
-              android:paddingRight="@dimen/activity_horizontal_margin"
-              android:paddingTop="@dimen/activity_vertical_margin"
-              tools:context="com.example.hiral.myapplication.LoginActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:gravity="center_horizontal"
+             android:orientation="vertical"
+             tools:context="com.example.hiral.myapplication.LoginActivity"
+             android:weightSum="1">
+
 
     <!-- Login progress -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back_coffee"
+        android:layout_gravity="bottom"
+        android:id="@+id/background_imageView"
+        android:cropToPadding="true"/>
+
     <ProgressBar
         android:id="@+id/login_progress"
         style="?android:attr/progressBarStyleLarge"
@@ -22,7 +30,11 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
         android:fillViewport="false">
 
         <LinearLayout
@@ -37,9 +49,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@color/text"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    />
+                    android:padding="10dp"
+                    android:layout_marginBottom="10dp"/>
 
                 <EditText
                     android:id="@+id/password"
@@ -47,36 +62,41 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
                     android:imeActionId="@+id/login"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@color/text"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    />
-
+                    android:padding="10dp"
+                    android:layout_marginBottom="10dp"/>
 
             <Button
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="162dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold"
-                android:layout_gravity="center_horizontal"/>
+                android:background="@color/colorPrimary"
+                android:textColor="@color/text"
+                android:layout_gravity="center_horizontal"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"/>
 
             <Button
                 android:id="@+id/sign_up_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="162dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="@string/action_sign_up"
                 android:textStyle="bold"
-                android:layout_gravity="center_horizontal"/>
-
-            <!-- TODO: Button UI Control for SignUp -->
-
-
+                android:background="@color/colorPrimary"
+                android:textColor="@color/text"
+                android:layout_gravity="center_horizontal"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"/>
 
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+</FrameLayout>
