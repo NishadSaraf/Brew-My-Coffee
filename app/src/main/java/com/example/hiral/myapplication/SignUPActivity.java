@@ -15,6 +15,9 @@ import android.widget.Toast;
 import android.location.LocationListener;
 import com.google.android.gms.maps.GoogleMap;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by Deven Bawale and Nishad Saraf on 11/22/2016.
  */
@@ -85,7 +88,6 @@ public class SignUPActivity extends LoginActivity
                     }
                     Location location = mprovider;
                     if (location != null) {
-                        //onLocationChanged(location);
                         latitude.setText(String.valueOf(location.getLatitude()));
                         longitude.setText( String.valueOf(location.getLongitude()));
                     }
@@ -104,10 +106,18 @@ public class SignUPActivity extends LoginActivity
                 lat=latitude.getText().toString();
                 lng=longitude.getText().toString();
 
+                //check if the username is of valid email address format
+                Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
+                Matcher mat = pattern.matcher(userName);
+                if(!mat.matches()){
+                    Toast.makeText(getApplicationContext(),"Username should be a valid email address",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 // check if any of the fields are vacant
                 if(userName.equals("")||password.equals("")||confirmPassword.equals("")||lat.equals("")||lng.equals(""))
                 {
-                    Toast.makeText(getApplicationContext(), "Field Vaccant", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Field Vacant", Toast.LENGTH_LONG).show();
                     return;
                 }
                 // check if both password matches
