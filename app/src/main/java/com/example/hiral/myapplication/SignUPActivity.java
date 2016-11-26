@@ -16,10 +16,11 @@ import android.location.LocationListener;
 import com.google.android.gms.maps.GoogleMap;
 
 /**
- * Created by Hiral on 7/28/2016.
+ * Created by Deven Bawale and Nishad Saraf on 11/22/2016.
  */
 public class SignUPActivity extends LoginActivity
 {
+    // UI references
     EditText editTextUserName,editTextPassword,editTextConfirmPassword,latitude,longitude;
     Button btnCreateAccount,btnHomeLocation;
     LoginDataBaseAdapter loginDataBaseAdapter;
@@ -36,7 +37,7 @@ public class SignUPActivity extends LoginActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
-
+        // retrieve stored bundles if any
         if (savedInstanceState == null) {
             Intent intent = getIntent();
             userName = intent.getStringExtra(userName);
@@ -58,7 +59,6 @@ public class SignUPActivity extends LoginActivity
         btnHomeLocation = (Button)findViewById(R.id.button_set_home_location);
         btnCreateAccount = (Button)findViewById(R.id.button_create_acc);
 
-        //int percode=1;
         ActivityCompat.requestPermissions(SignUPActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
 
         btnHomeLocation.setOnClickListener(new View.OnClickListener() {

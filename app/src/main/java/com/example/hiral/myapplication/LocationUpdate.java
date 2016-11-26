@@ -140,9 +140,9 @@ public class LocationUpdate extends AppCompatActivity{
                 }
                 //To handle exceptions
                 catch (JSONException e)
-                    {
-                        e.printStackTrace();
-                    }
+                {
+                    e.printStackTrace();
+                }
                 catch (ExecutionException e)
                 {
                     e.printStackTrace();
@@ -192,5 +192,12 @@ public class LocationUpdate extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+    // on back button press take the user back to main activity
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(LocationUpdate.this,LoginActivity.class);
+        startActivity(intent);
+    }
+
 }
 

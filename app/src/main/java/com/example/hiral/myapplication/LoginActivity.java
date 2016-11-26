@@ -12,8 +12,9 @@ import android.widget.Toast;
 
 import static android.widget.Toast.LENGTH_SHORT;
 /**
- * Created by Hiral on 7/28/2016.
+ * Created by Deven Bawale and Nishad Saraf on 11/22/2016.
  */
+
 /**
  * A login screen that offers login via email/password.
  * Provides Functionality to Signup for new account
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        // retrieve stored bundles if any
         if (savedInstanceState == null) {
             Intent intent = getIntent();
             userName = intent.getStringExtra(userName);
@@ -54,15 +55,17 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 // Code below gets the User name and Password
-                 userName = mEmail.getText().toString();
-                 password = mPasswordView.getText().toString();
-
+                userName = mEmail.getText().toString();
+                password = mPasswordView.getText().toString();
+                // fetch the password corresponding to particular username from database stored locally
                 String passwordfromdb = loginDataBaseAdapter.getSingleEntry(userName);
                 if(passwordfromdb.equals("NOT EXIST")){
                     Toast.makeText(getBaseContext(),R.string.username_does_not_exist,LENGTH_SHORT).show();
                 }
                 else{
+                    // authenticate the username and password against the values stored in database
                     if(password.equals(passwordfromdb)){
+                        // start LocationUpdate activity
                         Intent intent = new Intent(LoginActivity.this,LocationUpdate.class);
                         intent.putExtra("tx_user_name",userName);
                         startActivity(intent);
@@ -80,15 +83,15 @@ public class LoginActivity extends AppCompatActivity {
         mSignUpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sign_up =new Intent(LoginActivity.this,SignUPActivity.class);
+                // start SignUpActivity
+                Intent sign_up = new Intent(LoginActivity.this,SignUPActivity.class);
                 startActivity(sign_up);
             }
         });
     }
-
+    // fires when there is a change in device configuration to save data across these changes
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-
         savedInstanceState.putString("username", userName);
         savedInstanceState.putString("password", password);
         super.onSaveInstanceState(savedInstanceState);
@@ -99,5 +102,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onDestroy();
         // Close The Database
         loginDataBaseAdapter.close();
+    }
+
+    // exit from the application when back button s pressed
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
