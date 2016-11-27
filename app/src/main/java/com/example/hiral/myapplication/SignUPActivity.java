@@ -50,7 +50,7 @@ public class SignUPActivity extends LoginActivity
         // Creates object for LoginDataBaseAdapter to gain access to database
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
-
+        // link all the UI components to java objects
         editTextUserName = (EditText)findViewById(R.id.editText_username);
         editTextPassword = (EditText)findViewById(R.id.editText_password);
         editTextConfirmPassword = (EditText)findViewById(R.id.editText_confirm_password);
@@ -59,10 +59,14 @@ public class SignUPActivity extends LoginActivity
         btnHomeLocation = (Button)findViewById(R.id.button_set_home_location);
         btnCreateAccount = (Button)findViewById(R.id.button_create_acc);
 
+        // Since Android 6.0 some permissions are considered as "dangerous" (FINE_LOCATION is one of them).
+        // To protect the user, permissions have to be authorized at runtime, so the user know if it's related to his action.
         ActivityCompat.requestPermissions(SignUPActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
 
         btnHomeLocation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                // LocationManager is the main class through which application can access location services.
+                // a reference can be obtained from calling the getSystemService() method.
                 LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                 LocationListener locationListener = new LocationListener() {
 
@@ -75,11 +79,13 @@ public class SignUPActivity extends LoginActivity
                     public void onProviderDisabled(String provider) {}
 
                 };
+                // get the location from gps provider
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
                 String locationProvider = LocationManager.GPS_PROVIDER;
                 mprovider = locationManager.getLastKnownLocation(locationProvider);
                 if (mprovider != null && !mprovider.equals("")) {
+                    // if permission is granted then set the EditText views with respective values of latitude and longitude
                     if (ActivityCompat.checkSelfPermission(SignUPActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(SignUPActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                         return;
                     }
@@ -107,7 +113,7 @@ public class SignUPActivity extends LoginActivity
                 // check if any of the fields are vacant
                 if(userName.equals("")||password.equals("")||confirmPassword.equals("")||lat.equals("")||lng.equals(""))
                 {
-                    Toast.makeText(getApplicationContext(), "Field Vaccant", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Field Vacant", Toast.LENGTH_LONG).show();
                     return;
                 }
                 // check if both password matches
@@ -130,6 +136,7 @@ public class SignUPActivity extends LoginActivity
         });
     }
 
+    // fires when there is a change in device configuration to save data across these changes
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
 

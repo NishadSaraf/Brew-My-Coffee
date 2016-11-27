@@ -89,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     // fires when there is a change in device configuration to save data across these changes
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
