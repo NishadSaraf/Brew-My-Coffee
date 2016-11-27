@@ -29,7 +29,7 @@ import java.util.concurrent.ExecutionException;
  *
  */
 public class LocationUpdate extends AppCompatActivity{
-
+    // UI references
     private final String LOCATION_UPDATE_TAG = "LocationUpdate";
     private EditText send_message;
     private Button send;
@@ -56,6 +56,7 @@ public class LocationUpdate extends AppCompatActivity{
         editTextLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Create a new builder for an intent to launch the Place Picker UI.
                 PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
                 try {
                     startActivityForResult(builder.build(LocationUpdate.this),Place_Picker_request);
@@ -69,9 +70,12 @@ public class LocationUpdate extends AppCompatActivity{
             }
         });
 
-
+        // link all the UI components to java objects
         current_location_tv = (TextView) findViewById(R.id.textView_current_location);
         current_location_btn = (Button) findViewById(R.id.button_current_location);
+        send_message = (EditText) findViewById(R.id.Send_Message);
+        send = (Button) findViewById(R.id.Send_Button);
+        // set the address string to text view current_location_tv
         current_location_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,26 +84,24 @@ public class LocationUpdate extends AppCompatActivity{
         });
 
 
-
         /**
          * Do not edit the code below as it is dependent on server just fill the required snippets
          *
          */
-        send_message = (EditText) findViewById(R.id.Send_Message);
-        send = (Button) findViewById(R.id.Send_Button);
+        // using object reference variable loginData to LoginDataBaseAdapter access the home location coordinates.
         loginData = new LoginDataBaseAdapter(this);
         loginData = loginData.open();
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /**
                  * OnClick event for send button gets username and location details
                  */
-                message=send_message.getText();
-                Bundle extras=getIntent().getExtras();
-                String rx_username=extras.getString("tx_user_name");
-
-
+                message = send_message.getText();
+                Bundle extras = getIntent().getExtras();
+                String rx_username = extras.getString("tx_user_name");
+                // read the home coordinates from database stored locally
                 String rx_lat=loginData.getLat(rx_username);
                 String rx_lon=loginData.getLng(rx_username);
 
@@ -155,13 +157,8 @@ public class LocationUpdate extends AppCompatActivity{
         });
     }
 
-
-    /**
-     * TODO: Define onActivityResult() method which would take Place_Picker_request
-     * and extract current Latitude, Longitude and address string
-     * Hint : Set the address String to "get_location" text box
-     * Reference : https://developers.google.com/places/android-api/placepicker
-     */
+    // receive the place picker request and extract the current longitude and latitude and address string.
+    // Reference : https://developers.google.com/places/android-api/placepicker
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == Place_Picker_request){
@@ -192,6 +189,7 @@ public class LocationUpdate extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+
     // on back button press take the user back to main activity
     @Override
     public void onBackPressed() {
@@ -200,4 +198,3 @@ public class LocationUpdate extends AppCompatActivity{
     }
 
 }
-

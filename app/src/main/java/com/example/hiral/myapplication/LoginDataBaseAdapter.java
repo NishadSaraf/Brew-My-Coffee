@@ -6,6 +6,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 /**
  * Created by Hiral on 7/28/2016.
+ * Modified by Deven Bawale and Nishad Saraf to save home location coordinates on 11/22/2016.
  */
 public class LoginDataBaseAdapter {
         static final String DATABASE_NAME = "login.db";
@@ -74,6 +75,7 @@ public class LoginDataBaseAdapter {
             return password;
         }
 
+        // return the value of longitude stored in the database
         public String getLng(String userName){
             Cursor cursor=db.query("LOGIN", null, " USERNAME=?", new String[]{userName}, null, null, null);
             if(cursor.getCount()<1) // UserName Not Exist
@@ -87,18 +89,19 @@ public class LoginDataBaseAdapter {
             return longitude;
         }
 
-    public String getLat(String userName){
-        Cursor cursor=db.query("LOGIN", null, " USERNAME=?", new String[]{userName}, null, null, null);
-        if(cursor.getCount()<1) // UserName Not Exist
-        {
+        // return the value of latitude stored in the database
+        public String getLat(String userName){
+            Cursor cursor=db.query("LOGIN", null, " USERNAME=?", new String[]{userName}, null, null, null);
+            if(cursor.getCount()<1) // UserName Not Exist
+            {
+                cursor.close();
+                return "NOT EXIST";
+            }
+            cursor.moveToFirst();
+            String latitude= cursor.getString(cursor.getColumnIndex("LATITUDE"));
             cursor.close();
-            return "NOT EXIST";
+            return latitude;
         }
-        cursor.moveToFirst();
-        String latitude= cursor.getString(cursor.getColumnIndex("LATITUDE"));
-        cursor.close();
-        return latitude;
-    }
 
-    }
+}
 
